@@ -11,25 +11,52 @@ import Signup from "./Signup";
 import HistoryChart from './HistoryChart';
 import ChangePassword from './ChangePassword';
 import ForgotPassword from "./ForgotPassword.js"
-import Logout from './Logout';
+import Enquiry from "./Enquiry";
+import Darkmode from 'darkmode-js';
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 function App() {
+
+
+
+  const options = {
+    bottom: '64px', // default: '32px'
+    right: 'unset', // default: '32px'
+    left: '32px', // default: 'unset'
+    time: '0.5s', // default: '0.3s'
+    mixColor: '#fff', // default: '#fff'
+    backgroundColor: '#fff',  // default: '#fff'
+    buttonColorDark: '#100f2c',  // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: true, // default: true,
+    label: '🌓', // default: ''
+    autoMatchOsTheme: true // default: true
+  }
+  
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
+
+
+
+
+
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <NavBar/> */}
+        <NavBar
+         
+        />
         <Routes>
-        <Route path ="/" element={<Home/>}/>
+        <Route path ="/" element={<Login/>}/>
           <Route path="/news" element={<News/>} />
           <Route path ="/description" element={<Description/>}/>
           <Route path="/*" element={<Navigate to="/" />} />
           <Route path="/historychart" element={<HistoryChart/>}/>
-          <Route path="/login" element={<Login/>}/>
+          <Route path="/home" element={<Home/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/forgotpassword" element={<ForgotPassword/>}/>
           <Route path="/changepassword" element={<ChangePassword/>}/>
-          <Route path="/logout" element={<Logout/>}/>
-
+          <Route path="/enquiry" element={<Enquiry/>}/>
           <Route path ="/about" element={<About/>}/>
 
       </Routes>
